@@ -1,4 +1,4 @@
-\FROM debian:buster AS base
+FROM debian:buster AS base
 
 LABEL maintainer "Mrpandat https://github.com/mrpandat"
 

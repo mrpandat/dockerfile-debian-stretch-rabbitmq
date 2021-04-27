@@ -17,12 +17,30 @@ RUN apt-key adv --keyserver "hkps://keys.openpgp.org" --recv-keys "0x0A9AF2115F4
 
 ## Install Erlang packages
 RUN apt-get update -y && \
-    apt-get install -y libssl1.1 erlang-base \
-        erlang-asn1 erlang-crypto erlang-eldap erlang-ftp erlang-inets \
-        erlang-mnesia erlang-os-mon erlang-parsetools erlang-public-key \
-        erlang-runtime-tools erlang-snmp erlang-ssl \
-        erlang-syntax-tools erlang-tftp erlang-tools erlang-xmerl
+    apt-get install -y \
+        libssl1.1 \
+        erlang-base \
+        erlang-asn1 \
+        erlang-crypto \
+        erlang-eldap \
+        erlang-ftp \
+        erlang-inets \
+        erlang-mnesia \
+        erlang-os-mon \
+        erlang-parsetools \
+        erlang-public-key \
+        erlang-runtime-tools \
+        erlang-snmp \
+        erlang-ssl \
+        erlang-syntax-tools \
+        erlang-tftp \
+        erlang-tools \
+        erlang-xmerl \
+        && rm -rf /var/lib/apt/lists/*
 
 ## Install rabbitmq-server and its dependencies
-RUN apt-get install rabbitmq-server -y --fix-missing && \
-    rabbitmq-plugins enable rabbitmq_management
+RUN apt-get update -y && \
+    apt-get install \
+    rabbitmq-server -y --fix-missing && \
+    rabbitmq-plugins enable rabbitmq_management && \
+    rm -rf /var/lib/apt/lists/*

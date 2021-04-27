@@ -4,11 +4,9 @@ LABEL maintainer "Mrpandat https://github.com/mrpandat"
 
 # Install RabbitMQ
 
-RUN apt update -y && apt-get install curl gnupg debian-keyring debian-archive-keyring apt-transport-https -y && \
+RUN apt update -y && \
+    apt-get install curl gnupg debian-keyring debian-archive-keyring apt-transport-https software-properties-common -y && \
     tee /etc/apt/sources.list.d/rabbitmq.list <<EOF
-
-RUN apt-get update && \
-    apt-get install -y software-properties-common --fix-missing
 
 ## Team RabbitMQ's main signing key
 RUN apt-key adv --keyserver "hkps://keys.openpgp.org" --recv-keys "0x0A9AF2115F4687BD29803A206B73A36E6026DFCA" && \
